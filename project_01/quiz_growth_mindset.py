@@ -20,6 +20,7 @@ questions = [
 ]
 
 # Streamlit UI Styling
+# Streamlit UI Styling
 st.markdown("""
     <style>
         body {
@@ -30,6 +31,7 @@ st.markdown("""
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: black;  /* Text color black kar diya */
         }
         .stButton>button {
             background-color: #28a745;
@@ -37,8 +39,16 @@ st.markdown("""
             border-radius: 10px;
             padding: 10px;
         }
+        /* Mobile Screen Fix */
+        @media (max-width: 768px) {
+            .main {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.title("🌱 Growth Mindset Quiz")
 st.write("Test your mindset! Answer these questions to see if you have a growth mindset.")
