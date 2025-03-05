@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 
 # 🛠 Function to convert length and weight
 def convert_units(value, from_unit, to_unit, conversion_dict):
