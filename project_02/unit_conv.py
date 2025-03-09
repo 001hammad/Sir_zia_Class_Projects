@@ -29,7 +29,7 @@ length_conversion = {
     "Mile": 0.000621371, "Yard": 1.09361, "Foot": 3.28084, "Inch": 39.3701
 }
 
-# ⚖ Weight conversion dictionary
+# ⚖ Weight conversion dictionar
 weight_conversion = {
     "Kilogram": 1, "Gram": 1000, "Milligram": 1000000, "Pound": 2.20462, "Ounce": 35.274
 }
