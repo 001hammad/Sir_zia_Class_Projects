@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from io import BytesIO
 
-# App Configurati
+# App Configuratii
 st.set_page_config(page_title="📀 Data Sweeper", layout="wide")
 
 # App Title
