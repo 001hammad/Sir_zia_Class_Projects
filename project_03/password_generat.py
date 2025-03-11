@@ -3,9 +3,9 @@ import random
 import string
 import streamlit as st
 
-def generate_strong_password():
+def generate_strong_password(length=12):
     characters = string.ascii_letters + string.digits + "!@#$%^&*"
-    return ''.join(random.choice(characters) for _ in range(12))
+    return ''.join(random.choice(characters) for _ in range(length))
 
 def check_password_strength(password):
     score = 0
@@ -40,6 +40,7 @@ def check_password_strength(password):
 # Streamlit UI
 st.title("🔐 Password Strength Meter")
 st.markdown("Enter a password below to check its strength and get improvement suggestions.")
+
 password = st.text_input("Enter your password:", type="password")
 
 def display_feedback(feedback):
@@ -50,23 +51,26 @@ if st.button("Check Strength"):
     if password:
         score, feedback = check_password_strength(password)
         
+        st.write(f"🔢 **Password Strength Score: {score}/4**")  # Score explicitly show karne ke liye
+        
         if score == 4:
             st.success("✅ Strong Password! Your password meets all security requirements.")
         elif score == 3:
             st.warning("⚠️ Moderate Password - Consider adding more security features like numbers or special characters.")
             display_feedback(feedback)
-            strong_password = generate_strong_password()
-            st.info(f"🔹 Suggested Strong Password: `{strong_password}`")
         else:
             st.error("❌ Weak Password - Improve it using the suggestions below.")
             display_feedback(feedback)
-            strong_password = generate_strong_password()
-            st.info(f"🔹 Suggested Strong Password: `{strong_password}`")
     else:
         st.error("❌ Please enter a password!")
 
+# 🔹 **New Feature: User-defined Password Length**
+st.markdown("---")
+st.subheader("🔹 Generate a Strong Password")
+password_length = st.slider("Select Password Length", min_value=8, max_value=20, value=12, step=1)
+
 if st.button("Generate Strong Password"):
-    strong_password = generate_strong_password()
+    strong_password = generate_strong_password(password_length)
     st.code(strong_password, language='')
 
 st.markdown("---")
